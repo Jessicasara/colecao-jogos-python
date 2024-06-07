@@ -1,5 +1,9 @@
 import os
 
+jogos = [{'nome':'Zelda', 'categoria':'RPG', 'Ativo':False},
+         {'nome':'Mario', 'categoria':'Plataforma', 'Ativo':True},
+         {'nome':'Metroid', 'categoria':'Plataforma', 'Ativo':True} ]
+
 def exibir_nome_do_programa():
     print('''
     𝕮𝖔𝖑𝖊𝖈̧𝖆̃𝖔 𝖉𝖊 𝕵𝖔𝖌𝖔𝖘
@@ -19,15 +23,38 @@ def opcao_invalida():
     input('''Digite uma tecla para reiniciar ❣ ''')
     main()
 
+def cadastrar_novo_jogo():
+    os.system('cls')
+    print('Cadastrar novo jogo\n')
+    nome_jogo = input('''Digite o nome do jogo ❣ ''')
+    categoria = input('''Digite a categoria do jogo ❣ ''')
+    dados_do_jogo = {'nome':nome_jogo, 'categoria':categoria, 'ativo':False}
+    jogos.append(dados_do_jogo)
+    input('''Digite uma tecla para reiniciar ❣ ''')
+    main()
+
+def listar_jogos():
+    os.system('cls')
+    print('Lista de jogos\n')
+    for jogo in jogos:
+        nome_do_jogo = jogo['nome']
+        categoria_do_jogo = jogo['categoria']
+        ativo_jogo = jogo['Ativo']
+        print(f' - {nome_do_jogo} | {categoria_do_jogo} | {ativo_jogo}')
+
+    input('''Digite uma tecla para reiniciar ❣ ''')
+    main()
+   
+
 def escolher_opcao():
     try:
         opcao_escolhida = int(input('''Escolha uma opção ❣ '''))
         print(f'''Você escolheu a opção 🎀 {opcao_escolhida}''')
 
         if opcao_escolhida == 1:
-            print('''Cadastro de jogos 🎀 ''')
+            cadastrar_novo_jogo()
         elif opcao_escolhida == 2:
-            print('''Listar os jogos 🎀''')
+            listar_jogos()
         elif opcao_escolhida == 3:
             print('''Ativar jogo 🎀''')
         elif opcao_escolhida == 4:
