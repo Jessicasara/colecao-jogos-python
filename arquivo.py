@@ -29,7 +29,7 @@ while True:
             cadastrar_aluno()
         elif opcao == 'n':
             exibir_alunos()
-            break
+            break 
         else:
             print('Opção inválida')
 
@@ -48,8 +48,19 @@ print(pessoa['cidade'])
 def somar(a, b):
     return a + b
 
-resultado = somar(39, 28)
+resultado = somar(39, 28 )
 print(resultado)
+
+#Em Python, um módulo é um arquivo contendo código Python, com extensão .py, que pode ser importado por outros programas Python.
+#  Ele permite organizar o código de uma maneira mais modular, facilitando a manutenção e a reutilização de código.
+
+#Os módulos Python podem conter:
+
+#Funções: blocos de código que realizam uma tarefa específica.
+##lasses: estruturas que encapsulam dados e operações relacionadas.
+#Va#riáveis: valores que podem ser acessados e manipulados.
+#Constantes: variáveis cujos valores não mudam durante a execução do programa.
+#Outros módulos: é possível importar módulos dentro de outros módulos para organizar o código em uma hierarquia mais profunda.
 
 
 
