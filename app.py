@@ -11,21 +11,25 @@ def exibir_nome_do_programa():
 def exibir_opcoes():
     print('1. Cadastrar jogo')
     print('2. Listar jogos')
-    print('3. Ativar jogo')
+    print('3. Alterar estado do jogo')
     print('4. Sair\n')
 
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha = '-' * (len(texto))
+    print(linha)
     print(texto)
+
+    print(linha)
     print()
 
 
 def finalizar_app():
     os.system('cls')
-    exibir_subtitulo('''𝓔𝓷𝓬𝓮𝓻𝓻𝓪𝓷𝓭𝓸 𝓹𝓻𝓸𝓰𝓻𝓪𝓶𝓪 🎀''')
+    print('''Encerrando Programa 🎀''')
 
 def opcao_invalida():
-    exibir_subtitulo('''𝓸𝓹𝓬̧𝓪̃𝓸 𝓲𝓷𝓿𝓪́𝓵𝓲𝓭𝓪\n''')
+    exibir_subtitulo('Opção Inválida\n')
     input('''Digite uma tecla para reiniciar ❣ ''')
     main()
 
@@ -40,27 +44,27 @@ def cadastrar_novo_jogo():
     main()
 
 def listar_jogos():
-    os.system('cls')
-    print('Lista de jogos\n')
+    exibir_subtitulo('Listando os Jogos')
+    print(f" - {'Nome do Jogo'.ljust(15)} | {'Categoria'.ljust(15)} | Status")
     for jogo in jogos:
         nome_do_jogo = jogo['nome']
         categoria_do_jogo = jogo['categoria']
         ativo_jogo = jogo['Ativo']
-        print(f' - {nome_do_jogo} | {categoria_do_jogo} | {ativo_jogo}')
+        print(f' - {nome_do_jogo.ljust(15)} | {categoria_do_jogo.ljust(15)} | {ativo_jogo}')
 
     input('''Digite uma tecla para reiniciar ❣ ''')
     main()
    
-def alternar_estado_do_jogo():
+def alternar_estado_jogo():
     exibir_subtitulo('Modificar estado do jogo')
     nome_jogo = input('Digite o nome do jogo')
     for jogo in jogos:
         if nome_jogo == jogo['nome']:
-           jogo['ativo'] = not jogo['ativo']
-           if jogo['ativo']:
-               print(f'O jogo {nome_jogo} está ativado')
-           else:
-               print(f'O jogo {nome_jogo} está desativado')  
+            jogo['ativo'] = not jogo['ativo']
+
+            mensagem = f'O jogo {nome_jogo} está ativado' if jogo ['ativo'] else f'O jogo {nome_jogo} está desativado' 
+            print(mensagem)
+            
     main()
             
 
@@ -75,7 +79,7 @@ def escolher_opcao():
         elif opcao_escolhida == 2:
             listar_jogos()
         elif opcao_escolhida == 3:
-            alternar_estado_do_jogo()
+            alternar_estado_jogo()
         elif opcao_escolhida == 4:
             finalizar_app()
         else:
@@ -84,7 +88,6 @@ def escolher_opcao():
         opcao_invalida()
 
 def main():
-    alternar_estado_do_jogo()
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
